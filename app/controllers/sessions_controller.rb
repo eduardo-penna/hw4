@@ -13,18 +13,18 @@ class SessionsController < ApplicationController
         redirect_to "/places"
       else 
         flash[:notice] = "Password is incorrect. Try Again!"
-        redirect_to "/sessions/new"
+        redirect_to "/login"
       end 
     else 
       flash[:notice] = "Username not found!"
-      redirect_to "/sessions/new"
+      redirect_to "/login"
     end
   end
 
   def destroy
     session["user_id"] = nil
     flash[:notice] = "You are out!"
-    redirect_to "/sessions/new"
+    redirect_to "/logout"
   end
 end
   

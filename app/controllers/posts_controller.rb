@@ -6,14 +6,20 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new
-    @post["title"] = params["post"]["title"]
-    @post["description"] = params["post"]["description"]
-    @post.uploaded_image.attach(params["post"]["uploaded_image"])
-    @post["posted_on"] = params["post"]["posted_on"]
-    @post["place_id"] = params["post"]["place_id"]
-    @post.save
-    redirect_to "/places/#{@post["place_id"]}"
+    
+    if @current_user
+      @post = Post.new
+      @post["title"] = params["post"]["title"]
+      @post["description"] = params["post"]["description"]
+      @post.uploaded_image.attach(params["post"]["uploaded_image"])
+      @post["posted_on"] = params["post"]["posted_on"]
+      @post["place_id"] = params["post"]["place_id"]
+      @post.save
+      redirect_to "/places/#{@post["place_id"]}"
+    else
+      flash["notice"] = "Please, login to make a new post."
+    end
+
   end
 
 end

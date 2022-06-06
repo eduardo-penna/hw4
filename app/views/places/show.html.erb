@@ -3,6 +3,16 @@
 <h2>My Posts</h2>
 <% for post in @posts %>
   <h3><%= post["title"] %></h3>
+<p>
+
+<% if post.uploaded_image.attached? %>
+      <img src=" <%= url_for(post.uploaded_image) %>" class="img-fluid">
+      <% else %>
+      <img src="<%= post["image"] %>" class="img-fluid">
+      <% end %>
+
+</p>
+
   <h4><%= post["posted_on"] %></h4>
   <p><%= post["description"] %></p>
 <% end %>

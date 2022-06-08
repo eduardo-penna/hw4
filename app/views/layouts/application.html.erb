@@ -13,26 +13,19 @@
       <div class="container-fluid">
       
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e0dee0;">
-
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
         
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-1 mb-2>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">Home</a>
-                    </li>
-                  </ul>
-            
-                <ul class="navbar-nav py-1 ms-auto">
+                  
+                        <a href="/" class="btn btn-link pt-0">Home</a>
+
+                <ul class="navbar-nav ms-auto">
                 
                     <% if @current_user %>
                     Logged in as: <%= @current_user["username"] %> | 
-                          <a href="/logout" class="btn btn-default pt-0">Logout</a>
+                          <a href="/logout" class="btn btn-link pt-0">Logout</a>
                     <% else %>
-                          <a href="/login" class="btn btn-default">Login</a> |
-                          <a href="/users/new" class="btn btn-default">Sign Up</a>
+                          <a href="/login" class="btn btn-link">Login</a> |
+                          <a href="/users/new" class="btn btn-link">Sign Up</a>
                     <% end %>
                     
                 </ul>

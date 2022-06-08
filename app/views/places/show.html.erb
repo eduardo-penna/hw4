@@ -1,42 +1,44 @@
 <div class="container-fluid">
 
-    <p class="fw-bold fs-3"><%= @place["name"] %></p>
+          <p class="fw-bold fs-3"><%= @place["name"] %></p>
 
   <% if @current_user %>
 
+          <p>
+          <a href="/posts/new?place_id=<%= @place["id"] %>" class="btn btn-outline-dark fw-bold fs-6" >New Post</a>
+          </p>
 
-    <p>
-    <a href="/posts/new?place_id=<%= @place["id"] %>" class="btn btn-outline-dark fw-bold fs-6" >New Post</a>
-    </p>
+          <br>
+          
 
-    <br>
-    
-    <p class="fw-bold fs-5">My Posts</p>
+      <div class="row">
+          <% for post in @posts %>
 
+          <div class="col-md-4 col-sm-6">
 
+              <p class="fw-bold fs-5"><%= post["title"] %></p>
+              <p class="fw-bold fs-6"><%= post["posted_on"] %></p>
+            
+                <% if post.uploaded_image.attached? %>
+                      <img src=" <%= url_for(post.uploaded_image) %>" class="img-fluid">
+                <% else %>
+                      <img src="<%= post["image"] %>" class="img-fluid">
+                <% end %>
+        
 
-    <% for post in @posts %>
-      <h3><%= post["title"] %></h3>
-     <h4><%= post["posted_on"] %></h4>
+              <p class="text-break mt-2"><%= post["description"] %></p>
+          </div>
+        <% end %>
+      </div>
 
+  <% else %>
 
-    <% if post.uploaded_image.attached? %>
-          <img src=" <%= url_for(post.uploaded_image) %>" class="img-fluid">
-          <% else %>
-          <img src="<%= post["image"] %>" class="img-fluid">
-          <% end %>
-  
+    <p class="mt-2">Please <a href="/login">login</a> first</p>
 
- 
-      <p><%= post["description"] %></p>
-    <% end %>
-
-      <% else %>
-    You must first <a href="/login">login</a> to post.
   <% end %>
 
     <p>
-      <a href="/places">Back to All Places</a>
+      <a href="/places" class="btn btn-outline-dark fw-bold fs-6" >Back to All Places</a>
     </p>
 
 </div>

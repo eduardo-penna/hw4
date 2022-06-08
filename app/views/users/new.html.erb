@@ -1,22 +1,23 @@
 <div class="container-fluid mt-3 ms-2">
 
-<h1>New User Account</h1>
 
+<p class="fw-bold fs-3">New User Account</p>
+<br>
 <%= form_with :model => @user do |form| %>
   <p>
-    <%= form.label "username" %>
+    <%= form.label "username", class: "me-1" %>
     <%= form.text_field "username" %>
   </p>
   <p>
-    <%= form.label "email" %>
+    <%= form.label "email", class: "me-1" %>
     <%= form.text_field "email" %>
   </p>
   <p>
-    <%= form.label "password" %>
+    <%= form.label "password", class: "me-1" %>
     <%= form.text_field "password" %>
   </p>
   <p>
-    <%= form.submit "Sign up" %>
+        <%= form.submit "Sign up", class: "btn btn-outline-dark fw-bold mt-3" %>
   </p>
 <% end %>
 

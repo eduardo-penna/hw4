@@ -25,4 +25,4 @@ production:
   adapter: postgresql
   database: eduardo-penna-hw4_production
   username: eduardo-penna-hw4
-  password: <%= ENV["MY_APP_DATABASE_PASSWORD"] %>
+  password: <%= ENV["EDUARDO-PENNA-HW4_DATABASE_PASSWORD"] %>

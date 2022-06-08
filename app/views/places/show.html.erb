@@ -1,26 +1,42 @@
-<h1><%= @place["name"] %></h1>
+<div class="container-fluid">
 
-<h2>My Posts</h2>
-<% for post in @posts %>
-  <h3><%= post["title"] %></h3>
-<p>
+    <p class="fw-bold fs-3"><%= @place["name"] %></p>
 
-<% if post.uploaded_image.attached? %>
-      <img src=" <%= url_for(post.uploaded_image) %>" class="img-fluid">
+  <% if @current_user %>
+
+
+    <p>
+    <a href="/posts/new?place_id=<%= @place["id"] %>" class="btn btn-outline-dark fw-bold fs-6" >New Post</a>
+    </p>
+
+    <br>
+    
+    <p class="fw-bold fs-5">My Posts</p>
+
+
+
+    <% for post in @posts %>
+      <h3><%= post["title"] %></h3>
+     <h4><%= post["posted_on"] %></h4>
+
+
+    <% if post.uploaded_image.attached? %>
+          <img src=" <%= url_for(post.uploaded_image) %>" class="img-fluid">
+          <% else %>
+          <img src="<%= post["image"] %>" class="img-fluid">
+          <% end %>
+  
+
+ 
+      <p><%= post["description"] %></p>
+    <% end %>
+
       <% else %>
-      <img src="<%= post["image"] %>" class="img-fluid">
-      <% end %>
+    You must first <a href="/login">login</a> to post.
+  <% end %>
 
-</p>
+    <p>
+      <a href="/places">Back to All Places</a>
+    </p>
 
-  <h4><%= post["posted_on"] %></h4>
-  <p><%= post["description"] %></p>
-<% end %>
-
-<p>
-  <a href="/posts/new?place_id=<%= @place["id"] %>">New Post</a>
-</p>
-
-<p>
-  <a href="/places">Back to All Places</a>
-</p>
+</div>

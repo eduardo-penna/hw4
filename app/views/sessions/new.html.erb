@@ -1,16 +1,18 @@
-<div class="container-fluid">
-  <h1>Login</h1>
+<div class="container-fluid mt-3 ms-2">
+  
+    <p class="fw-bold fs-3">Login</p>
 
-  <%= form_with :url => "/sessions" do |form| %>
-    <div class="mb-3">
-      <%= form.label "email" %>
-      <%= form.text_field "email" %>
-      <%= form.label "password" %>
-      <%= form.password_field "password" %>
-    </div>
+    <%= form_with :url => "/sessions" do |form| %>
+     
+        <%= form.label "e-mail", class: "me-1" %>
+        <%= form.text_field "email", class: "me-3" %>
+        <%= form.label "password", class: "me-1"  %>
+        <%= form.password_field "password", class: "me-3"  %>
+     
+      <br>
+
+         <%= form.submit "Login", class: "btn btn-outline-dark fw-bold mt-3" %>
     
-    <div class="mb-3">
-      <%= form.submit "Login" %>
-    </div>
-  <% end %>
+    <% end %>
+
 </div>
